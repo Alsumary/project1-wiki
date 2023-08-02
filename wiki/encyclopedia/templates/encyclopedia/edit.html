@@ -1,25 +1,23 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-Edit Page
+Edit {{title}}
 {% endblock %}
 
 {% block body %}
 <h1>Edit Page</h1>
 {% csrf_token %}
-<form action="{% url 'saveedit'%}" method="POST">
+<form action="{% url 'saveedit'%}" method="POST" class="form">
   {% csrf_token %}
-  <label>Title<span class="important"><sup><b>*</b></sup></span> <b>:</b></label><br>
+  <label>Title<span class="important"><sup><b>*</b></sup></span> <b>:</b></label>
   <input type="text" name="title" required placeholder="Enter A title" value="{{ title }}" class="jbar-text">
-  <br><br>
   <label>Content <b>:</b></label>
-  <br>
   <textarea name="content">{{ content }}</textarea>
-  <br>
-  <span>* You can use HTML tags in content</span>
-  <br>
-  <input type="submit" value="Edit" class="btn btn-primary">
+  <span>* You can use <b>HTML</b> & <b>.md</b> tags in content</span>
+  <div class="btn-edit">
+    <input type="submit" value="Edit" class="btn btn-primary">
 </form>
+
 
 
 
