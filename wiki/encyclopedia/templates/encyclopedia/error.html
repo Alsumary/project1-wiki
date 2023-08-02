@@ -5,7 +5,7 @@ ERROR!
 {% endblock %}
 
 {% block body %}
-<h1>ERROR</h1>
-<h3>{{ message }}</h3>
+<h1 style="text-align: center"><span class="important">ERROR</span></h1>
+<h3 style="text-align: center">{{ message | safe}}</h3>
 
 {% endblock %}

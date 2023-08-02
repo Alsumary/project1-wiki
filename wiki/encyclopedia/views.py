@@ -40,8 +40,8 @@ def enter(request, title):
             "content": hcont
         })
     else:
-        return render(request, "encyclopedia/error.html", {
-            "message": "This Entry doesn't exist"
+        return render(request, 'encyclopedia/error.html', {
+                'message': '<span class="important">Sorry</span>, the entry <span class="important"><b>(</span> '+ title +' <span class="important">)</b></span> was not found <span class="important">!</span>'
         })
 
 
@@ -93,7 +93,7 @@ def pagenew(request):
         tit_none = util.get_entry(title)
         if tit_none is not None:
             return render(request, 'encyclopedia/error.html', {
-                'message': 'Entry page already exists'
+                'message': 'Indeed, there is a page in the name of <span class="important"><b>(</span> '+ title + ' <span class="important">)</span></b>',
             })
         else:
             util.save_entry(title, content)
