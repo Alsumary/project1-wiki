@@ -9,10 +9,10 @@ New Page
 {% csrf_token %}
 <form action="{% url 'pagenew'%}" method="POST">
   {% csrf_token %}
-  <label>Title<span class="important">*</span> <b>:</b> <sup><em>Requierd</em></sup></label><br>
+  <label>Title<span class="important"><sup><b>*</b></sup></span> <b>:</b></label><br>
   <input type="text" name="title" placeholder="Enter A title" required class="jbar-text">
   <br><br>
-  <label>Content <b>:</b> <sup><em>Optional</em></sup></label>
+  <label>Content <b>:</b></label>
   <br>
   <textarea name='content'></textarea>
   <br>
