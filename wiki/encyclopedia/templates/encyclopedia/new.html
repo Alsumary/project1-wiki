@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+New Page
+{% endblock %}
+
+{% block body %}
+<h1>New Page</h1>
+{% csrf_token %}
+<form action="{% url 'pagenew'%}" method="POST">
+  {% csrf_token %}
+  <label>Title<span class="important">*</span> <b>:</b> <sup><em>Requierd</em></sup></label><br>
+  <input type="text" name="title" placeholder="Enter A title" required class="jbar-text">
+  <br><br>
+  <label>Content <b>:</b> <sup><em>Optional</em></sup></label>
+  <br>
+  <textarea name='content'></textarea>
+  <br>
+  <span>* You can use HTML tags in content</span>
+  <br>
+  <input type="submit" value="New Page" class="btn btn-success">
+</form>
+
+
+
+{% endblock %}
