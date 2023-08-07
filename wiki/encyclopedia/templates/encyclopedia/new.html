@@ -9,9 +9,17 @@ New Page
 {% csrf_token %}
 <form action="{% url 'pagenew'%}" method="POST" class="form">
   {% csrf_token %}
+<<<<<<< HEAD
   <label>Title<span class="important"><sup><b>*</b></sup></span> <b>:</b></label>
   <input type="text" name="title" placeholder="Enter A title" required class="jbar-text">
   <label>Content <b>:</b></label>
+=======
+  <label>Title<span class="important">*</span> <b>:</b> <sup><em>Requierd</em></sup></label><br>
+  <input type="text" name="title" placeholder="Enter A title" required class="jbar-text">
+  <br><br>
+  <label>Content <b>:</b> <sup><em>Optional</em></sup></label>
+  <br>
+>>>>>>> parent of 6897f25 (second commit)
   <textarea name='content'></textarea>
   <span>* You can use <b>HTML</b> & <b>.md</b> tags in content</span>
   <div>
