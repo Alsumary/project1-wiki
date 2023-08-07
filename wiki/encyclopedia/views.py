@@ -11,8 +11,8 @@ import random
 # ----------------------------------
 
 
-def converter(t):
-    content = util.get_entry(t)
+def converter(title):
+    content = util.get_entry(title)
     pr_markdown = Markdown()
     if content != None:
         return pr_markdown.convert(content)
@@ -32,16 +32,16 @@ def index(request):
 # enter wiki page function
 # ------------------------
 
-def enter(request, t):
-    hcont = converter(t)
+def enter(request, title):
+    hcont = converter(title)
     if hcont != None:
         return render(request, "encyclopedia/enter.html", {
-            "t": t,
+            "title": title,
             "content": hcont
         })
     else:
         return render(request, 'encyclopedia/error.html', {
-                'message': '<span class="important">Sorry</span>, the entry <span class="important"><b>(</span> '+ t +' <span class="important">)</b></span> was not found <span class="important">!</span>'
+                'message': '<span class="important">Sorry</span>, the entry <span class="important"><b>(</span> '+ title +' <span class="important">)</b></span> was not found <span class="important">!</span>'
         })
 
 
@@ -89,17 +89,17 @@ def pagenew(request):
         return render(request, "encyclopedia/new.html")
     else:
         content = request.POST['content']
-        t = request.POST['t']
-        tit_none = util.get_entry(t)
+        title = request.POST['title']
+        tit_none = util.get_entry(title)
         if tit_none is not None:
             return render(request, 'encyclopedia/error.html', {
-                'message': 'Indeed, there is a page in the name of <span class="important"><b>(</span> '+ t + ' <span class="important">)</span></b>',
+                'message': 'Indeed, there is a page in the name of <span class="important"><b>(</span> '+ title + ' <span class="important">)</span></b>',
             })
         else:
-            util.save_entry(t, content)
-            h_cont = converter(t)
+            util.save_entry(title, content)
+            h_cont = converter(title)
             return render(request, "encyclopedia/enter.html", {
-                'title': t,
+                'title': title,
                 'content': h_cont
             })
 
@@ -109,10 +109,10 @@ def pagenew(request):
 
 def edit(request):
     if request.method == "POST":
-        t = request.POST['entered_t']
-        content = util.get_entry(t)
+        title = request.POST['entered_title']
+        content = util.get_entry(title)
         return render(request, 'encyclopedia/edit.html', {
-            'title': t,
+            'title': title,
             'content': content
         })
 
@@ -122,11 +122,11 @@ def edit(request):
 
 def saveedit(request):
     if request.method == "POST":
-        t = request.POST['t']
+        title = request.POST['title']
         content = request.POST['content']
-        util.save_entry(t, content)
-        h_cont = converter(t)
+        util.save_entry(title, content)
+        h_cont = converter(title)
         return render(request, "encyclopedia/enter.html", {
-            'title': t,
+            'title': title,
             'content': h_cont
         })
