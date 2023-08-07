@@ -10,10 +10,13 @@ Edit {{title}}
 <form action="{% url 'saveedit'%}" method="POST" class="form">
   {% csrf_token %}
 <<<<<<< HEAD
+<<<<<<< HEAD
   <label>Title<span class="important"><sup><b>*</b></sup></span> <b>:</b></label>
   <input type="text" name="title" required placeholder="Enter A title" value="{{ title }}" class="jbar-text">
   <label>Content <b>:</b></label>
 =======
+=======
+>>>>>>> parent of 6897f25 (second commit)
   <label>Title<span class="important">*</span> <b>:</b> <sup><em>Requierd</em></sup></label><br>
   <input type="text" name="title" required placeholder="Enter A title" value="{{ title }}" class="jbar-text">
   <br><br>
